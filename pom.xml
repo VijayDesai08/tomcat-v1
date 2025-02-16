@@ -10,8 +10,6 @@
   <packaging>war</packaging>
 
   <name>ROOT Maven Webapp</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -20,6 +18,7 @@
   </properties>
 
   <dependencies>
+    <!-- JUnit Dependency -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -30,33 +29,52 @@
 
   <build>
     <finalName>ROOT</finalName>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+
+    <pluginManagement>
       <plugins>
+        <!-- Maven Clean Plugin -->
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.1.0</version>
         </plugin>
-        <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
+
+        <!-- Maven Resources Plugin -->
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
           <version>3.0.2</version>
         </plugin>
+
+        <!-- Maven Compiler Plugin -->
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.8.0</version>
         </plugin>
+
+        <!-- Maven Surefire Plugin for Running Tests -->
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
           <version>2.22.1</version>
+          <configuration>
+            <!-- Ensure it runs classes ending with Test (e.g., MyTest.java) -->
+            <includes>
+              <include>**/*Test.java</include> <!-- Match test classes -->
+            </includes>
+          </configuration>
         </plugin>
+
+        <!-- Maven WAR Plugin -->
         <plugin>
           <artifactId>maven-war-plugin</artifactId>
           <version>3.2.2</version>
         </plugin>
+
+        <!-- Maven Install Plugin -->
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
           <version>2.5.2</version>
         </plugin>
+
+        <!-- Maven Deploy Plugin -->
         <plugin>
           <artifactId>maven-deploy-plugin</artifactId>
           <version>2.8.2</version>
